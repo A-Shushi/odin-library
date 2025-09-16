@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.main-container {
+    font-family: Halvetica, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-heading {
+    font-size: 2rem;
+    padding: 2rem;
+    font-weight: bold;
+}
+
+table {
+    border-radius: 8px;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #343a3e;
+}
+
+th {
+    padding: 1rem 0;
+    color: white;
+}
+
+tr:nth-child(1n+2) {
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+
+tr:nth-child(2n+2) {
+    background-color: white;
+}
+
+td {
+    padding: 1rem 0;
+}

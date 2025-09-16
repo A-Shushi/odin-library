@@ -17,12 +17,18 @@ function addBookToLibrary(title, author, pages, readStatus) {
 const tableHeader = document.getElementById("library-table")
 
 function displayBooks() {
+    // Cycle through each book in the myLibrary array
     for (const book of myLibrary) {
         const newRow = document.createElement("tr")
+        // Cycle through each object property of the book object
         for (const key in book) {
             if (key !== "id") {
                 const tableElement = document.createElement('td')
-                tableElement.textContent = book[key]
+                if (key === "readStatus") {
+                    book[key] ? tableElement.textContent = "Read" : tableElement.textContent = "Not Read"
+                } else {
+                    tableElement.textContent = book[key]
+                }
                 newRow.appendChild(tableElement)
             }
         }
@@ -34,5 +40,10 @@ function displayBooks() {
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
 addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
+addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
+addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
 
 displayBooks()
