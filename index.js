@@ -37,6 +37,19 @@ function removeBookById(id) {
     displayBooks()
 }
 
+function changeReadStatusById(id) {
+    for (const book of myLibrary) {
+        if (book["id"] === id) {
+            if (book["readStatus"]) {
+                book["readStatus"] = false;
+            } else {
+                book["readStatus"] = true;
+            }
+        }
+    }
+    displayBooks()
+}
+
 function displayBooks() {
     while (tableBody.firstChild) {
         tableBody.removeChild(tableBody.firstChild)
@@ -57,11 +70,18 @@ function displayBooks() {
             }
         }
         const tableElement = document.createElement('td')
+        const changeStatusButton = document.createElement("button")
+        changeStatusButton.textContent = "🔄"
+        changeStatusButton.addEventListener("click", () => {
+            changeReadStatusById(book["id"])
+        })
+        tableElement.appendChild(changeStatusButton)
         const deleteButton = document.createElement("button")
         deleteButton.textContent = "❌"
         deleteButton.addEventListener("click", () => {
             removeBookById(book["id"])
         })
+
         tableElement.appendChild(deleteButton)
         newRow.appendChild(tableElement)
         tableBody.appendChild(newRow)

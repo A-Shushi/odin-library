@@ -102,12 +102,14 @@ th {
     color: white;
 }
 
-.control-column {
+td:last-child,
+th:last-child {
+    max-width: 55px;
+    min-width: 55px;
     padding: 0;
-    max-width: 15px;
+    margin: 0;
 }
 
-.control-column > button,
 td > button {
     background: none;
     border: none;
@@ -126,4 +128,10 @@ tbody > tr:nth-child(2n+2) {
 
 td {
     padding: 1rem 0;
+}
+
+@media (max-width: 650px) {
+    .main-container {
+        padding: 0 2rem;
+    }
 }
