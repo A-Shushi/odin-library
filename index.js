@@ -21,6 +21,11 @@ function Book(title, author, pages, readStatus, id) {
     this.id = id;
 }
 
+Book.prototype.changeReadStatus = function () {
+    this.readStatus = !this.readStatus;
+    displayBooks()
+}
+
 function addBookToLibrary(title, author, pages, readStatus) {
     const uuid = crypto.randomUUID()
     const book = new Book(title, author, pages, readStatus, uuid)
@@ -37,19 +42,6 @@ function removeBookById(id) {
     displayBooks()
 }
 
-function changeReadStatusById(id) {
-    for (const book of myLibrary) {
-        if (book["id"] === id) {
-            if (book["readStatus"]) {
-                book["readStatus"] = false;
-            } else {
-                book["readStatus"] = true;
-            }
-        }
-    }
-    displayBooks()
-}
-
 function displayBooks() {
     while (tableBody.firstChild) {
         tableBody.removeChild(tableBody.firstChild)
@@ -59,21 +51,23 @@ function displayBooks() {
         const newRow = document.createElement("tr")
         // Cycle through each object property of the book object
         for (const key in book) {
-            if (key !== "id") {
-                const tableElement = document.createElement('td')
-                if (key === "readStatus") {
-                    book[key] ? tableElement.textContent = "Read" : tableElement.textContent = "Not Read"
-                } else {
-                    tableElement.textContent = book[key]
+            if (book.hasOwnProperty(key)) {
+                if (key !== "id") {
+                    const tableElement = document.createElement('td')
+                    if (key === "readStatus") {
+                        book[key] ? tableElement.textContent = "Read" : tableElement.textContent = "Not Read"
+                    } else {
+                        tableElement.textContent = book[key]
+                    }
+                    newRow.appendChild(tableElement)
                 }
-                newRow.appendChild(tableElement)
             }
         }
         const tableElement = document.createElement('td')
         const changeStatusButton = document.createElement("button")
         changeStatusButton.textContent = "🔄"
         changeStatusButton.addEventListener("click", () => {
-            changeReadStatusById(book["id"])
+            book.changeReadStatus()
         })
         tableElement.appendChild(changeStatusButton)
         const deleteButton = document.createElement("button")
@@ -81,7 +75,6 @@ function displayBooks() {
         deleteButton.addEventListener("click", () => {
             removeBookById(book["id"])
         })
-
         tableElement.appendChild(deleteButton)
         newRow.appendChild(tableElement)
         tableBody.appendChild(newRow)
