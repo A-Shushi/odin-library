@@ -1,7 +1,15 @@
-const tableHeader = document.querySelector("#library-table")
-const addBookButton = document.querySelector("#new-book-button")
+const tableBody = document.querySelector("#table-body")
+
+// Add Book Form Elements
+const newBookButton = document.querySelector("#new-book-button")
 const addBookDialog = document.querySelector("#new-book-dialog")
 const closeDialogButton = document.querySelector("#close-dialog-button")
+const bookForm = document.querySelector("#new-book-form")
+const titleInput = document.querySelector("#book-title")
+const authorInput = document.querySelector("#book-author")
+const pagesInput = document.querySelector("#book-pages")
+const readCheckbox = document.querySelector("#read-status")
+const addBookButton = document.querySelector("#add-book-button")
 
 const myLibrary = []
 
@@ -20,6 +28,9 @@ function addBookToLibrary(title, author, pages, readStatus) {
 }
 
 function displayBooks() {
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild)
+    }
     // Cycle through each book in the myLibrary array
     for (const book of myLibrary) {
         const newRow = document.createElement("tr")
@@ -35,15 +46,25 @@ function displayBooks() {
                 newRow.appendChild(tableElement)
             }
         }
-        tableHeader.appendChild(newRow)
+        tableBody.appendChild(newRow)
     }
 }
 
-addBookButton.addEventListener("click", () => {
+newBookButton.addEventListener("click", () => {
     addBookDialog.showModal()
 })
 closeDialogButton.addEventListener("click", () => {
     addBookDialog.close()
+})
+addBookButton.addEventListener("click", (event) => {
+    if (bookForm.checkValidity()) {
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readCheckbox.checked);
+        titleInput.value = "";
+        authorInput.value = "";
+        pagesInput.value = "";
+        readCheckbox.checked = false;
+        displayBooks();
+    }
 })
 
 //Temporary books for setting up HTML and CSS

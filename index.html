@@ -15,18 +15,21 @@
         <button type="button" id="new-book-button" class="ordinary-button">New Book
         </button>
         <table id="library-table">
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col"># of Pages</th>
-                <th scope="col">Status</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col"># of Pages</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
         </table>
         <dialog id="new-book-dialog">
-            <form action="">
-                <label for="book-title">Book Title:</label>
+            <form id="new-book-form" action="">
+                <label for="book-title">Book Title*:</label>
                 <input type="text" id="book-title" name="book-title" required>
-                <label for="book-author">Book Author:</label>
+                <label for="book-author">Book Author*:</label>
                 <input type="text" id="book-author" name="book-author" required>
                 <label for="book-pages"># of Pages:</label>
                 <input type="number" id="book-pages" name="book-pages">
@@ -34,7 +37,7 @@
                     <label for="read-status">Book Read</label>
                     <input type="checkbox" id="read-status" name="read-status">
                 </div>
-                <button type="button" id="add-book-button" class="ordinary-button">Add
+                <button type="submit" id="add-book-button" class="ordinary-button">Add
                     Book
                 </button>
             </form>

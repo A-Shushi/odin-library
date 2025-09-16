@@ -20,11 +20,17 @@
     font-weight: bold;
 }
 
+.ordinary-button,
+#new-book-dialog,
+input,
+table {
+    border-radius: 8px;
+}
+
 .ordinary-button {
     align-self: end;
     margin-bottom: 1rem;
     padding: 0.5rem 3rem;
-    border-radius: 8px;
     border: 1px solid grey;
 }
 
@@ -32,7 +38,6 @@
     align-self: center;
     justify-self: center;
     padding: 1rem 2rem;
-    border-radius: 8px;
     position: relative;
 }
 
@@ -55,7 +60,6 @@ label {
 input {
     font-size: 1.2rem;
     padding: 0.5rem;
-    border-radius: 8px;
     border: 1px solid grey;
     margin-bottom: 0.5rem;
 }
@@ -88,7 +92,6 @@ input {
 }
 
 table {
-    border-radius: 8px;
     width: 100%;
     border-collapse: collapse;
     background-color: #343a3e;
@@ -99,13 +102,13 @@ th {
     color: white;
 }
 
-tr:nth-child(1n+2) {
-    background-color: lightgrey;
+tbody > tr:nth-child(1n+1) {
+    background-color: white;
     border: 1px solid grey;
 }
 
-tr:nth-child(2n+2) {
-    background-color: white;
+tbody > tr:nth-child(2n+2) {
+    background-color: lightgrey;
 }
 
 td {
