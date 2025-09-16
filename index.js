@@ -1,3 +1,8 @@
+const tableHeader = document.querySelector("#library-table")
+const addBookButton = document.querySelector("#new-book-button")
+const addBookDialog = document.querySelector("#new-book-dialog")
+const closeDialogButton = document.querySelector("#close-dialog-button")
+
 const myLibrary = []
 
 function Book(title, author, pages, readStatus, id) {
@@ -13,8 +18,6 @@ function addBookToLibrary(title, author, pages, readStatus) {
     const book = new Book(title, author, pages, readStatus, uuid)
     myLibrary.push(book)
 }
-
-const tableHeader = document.getElementById("library-table")
 
 function displayBooks() {
     // Cycle through each book in the myLibrary array
@@ -36,14 +39,16 @@ function displayBooks() {
     }
 }
 
+addBookButton.addEventListener("click", () => {
+    addBookDialog.showModal()
+})
+closeDialogButton.addEventListener("click", () => {
+    addBookDialog.close()
+})
+
 //Temporary books for setting up HTML and CSS
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
 addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
-addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
-addBookToLibrary("Harry Potter", "J.K. Rowling", 201, true)
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 250, false)
 
 displayBooks()

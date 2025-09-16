@@ -12,6 +12,8 @@
 <body>
     <div class="main-container">
         <p class="title-heading">My Library</p>
+        <button type="button" id="new-book-button" class="ordinary-button">New Book
+        </button>
         <table id="library-table">
             <tr>
                 <th scope="col">Title</th>
@@ -20,6 +22,24 @@
                 <th scope="col">Status</th>
             </tr>
         </table>
+        <dialog id="new-book-dialog">
+            <form action="">
+                <label for="book-title">Book Title:</label>
+                <input type="text" id="book-title" name="book-title" required>
+                <label for="book-author">Book Author:</label>
+                <input type="text" id="book-author" name="book-author" required>
+                <label for="book-pages"># of Pages:</label>
+                <input type="number" id="book-pages" name="book-pages">
+                <div id="checkbox-container">
+                    <label for="read-status">Book Read</label>
+                    <input type="checkbox" id="read-status" name="read-status">
+                </div>
+                <button type="button" id="add-book-button" class="ordinary-button">Add
+                    Book
+                </button>
+            </form>
+            <button type="button" id="close-dialog-button">X</button>
+        </dialog>
     </div>
 </body>
 </html>
