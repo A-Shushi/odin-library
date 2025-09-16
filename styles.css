@@ -102,6 +102,19 @@ th {
     color: white;
 }
 
+.control-column {
+    padding: 0;
+    max-width: 15px;
+}
+
+.control-column > button,
+td > button {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    font-size: 1.2rem;
+}
+
 tbody > tr:nth-child(1n+1) {
     background-color: white;
     border: 1px solid grey;

@@ -27,6 +27,16 @@ function addBookToLibrary(title, author, pages, readStatus) {
     myLibrary.push(book)
 }
 
+function removeBookById(id) {
+    for (const book of myLibrary) {
+        if (book["id"] === id) {
+            const bookIndex = myLibrary.indexOf(book)
+            myLibrary.splice(bookIndex, 1)
+        }
+    }
+    displayBooks()
+}
+
 function displayBooks() {
     while (tableBody.firstChild) {
         tableBody.removeChild(tableBody.firstChild)
@@ -46,6 +56,14 @@ function displayBooks() {
                 newRow.appendChild(tableElement)
             }
         }
+        const tableElement = document.createElement('td')
+        const deleteButton = document.createElement("button")
+        deleteButton.textContent = "❌"
+        deleteButton.addEventListener("click", () => {
+            removeBookById(book["id"])
+        })
+        tableElement.appendChild(deleteButton)
+        newRow.appendChild(tableElement)
         tableBody.appendChild(newRow)
     }
 }
