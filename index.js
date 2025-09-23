@@ -13,17 +13,33 @@ const addBookButton = document.querySelector("#add-book-button")
 
 const myLibrary = []
 
-function Book(title, author, pages, readStatus, id) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.id = id;
-}
+// function Book(title, author, pages, readStatus, id) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.readStatus = readStatus;
+//     this.id = id;
+// }
+//
+// Book.prototype.changeReadStatus = function () {
+//     this.readStatus = !this.readStatus;
+//     displayBooks()
+// }
 
-Book.prototype.changeReadStatus = function () {
-    this.readStatus = !this.readStatus;
-    displayBooks()
+// Using Classes instead
+class Book {
+    constructor(title, author, pages, readStatus, id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+        this.id = id;
+    }
+
+    changeReadStatus() {
+        this.readStatus = !this.readStatus;
+        displayBooks()
+    }
 }
 
 function addBookToLibrary(title, author, pages, readStatus) {
